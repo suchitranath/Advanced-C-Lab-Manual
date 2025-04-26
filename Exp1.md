@@ -114,10 +114,10 @@ End the main function.
 Return 0 to indicate successful program execution.
 
 # Program:
-```
+
 ![image](https://github.com/user-attachments/assets/29f16d85-1649-45cf-bb56-12f5ab7ec1e1)
 
-```
+
 //type your code here
 
 # Output:
