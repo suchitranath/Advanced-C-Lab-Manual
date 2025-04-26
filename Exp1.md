@@ -114,17 +114,33 @@ End the main function.
 Return 0 to indicate successful program execution.
 
 # Program:
+```#include <stdio.h>
 
-![image](https://github.com/user-attachments/assets/29f16d85-1649-45cf-bb56-12f5ab7ec1e1)
+int main() {
+    FILE *p;
+    char name[100];
+    printf("Enter the file name to create: ");
+    scanf("%s", name);
+    printf("Creating the file: %s\n", name);
+    p = fopen(name, "w");
+    if (p == NULL) {
+        printf("Error! Could not create the file.\n");
+        return 1; 
+    }
+    printf("File has been opened successfully for writing.\n");
+    fprintf(p, "This is a sample file created using fopen().\n");
+    fclose(p);
+    printf("File has been closed.\n");
+    return 0;
+}
 
-
-//type your code here
+```
 
 # Output:
+![image](https://github.com/user-attachments/assets/29f16d85-1649-45cf-bb56-12f5ab7ec1e1)
 
-//paste your output here
-
-# Result: Thus, the program is verified successfully
+# Result: 
+Thus, the program is verified successfully
 
 ## EXP NO:4 PROGRAM TO READ A FILE NAME FROM USER, WRITE THAT FILE AND INSERT TEXT IN TO THAT FILE 
 
@@ -146,12 +162,45 @@ End the main function.
 Return 0 to indicate successful program execution.
 
 # Program:
+```
+#include <stdio.h>
 
-//type your code here
+int main() {
+    FILE *p;
+    char name[100], text[100];
+    int num, i;
+    printf("Enter the file name: ");
+    scanf("%s", name);
+
+    printf("Enter number of lines to write: ");
+    scanf("%d", &num);
+
+    p = fopen(name, "w");
+
+    if (p == NULL) {
+        printf("Error! Could not create the file.\n");
+        return 1;
+    }
+
+    printf("File opened successfully. Now writing text into it.\n");
+
+    for (i = 0; i < num; i++) {
+        printf("Enter line %d: ", i + 1);
+        scanf(" %[^\n]", text); 
+        fputs(text, p);
+        fputs("\n", p); 
+    }
+
+    fclose(p);
+    printf("Data added to the file successfully.\n");
+
+    return 0;
+}
+
+```
 
 # Output:
-
-//paste your output here
+![image](https://github.com/user-attachments/assets/0c7640b2-72c6-42ac-9311-ef6f0ad98306)
 
 # Result: 
 Thus, the program is verified successfully
@@ -189,10 +238,46 @@ The aim of this program is to dynamically allocate memory to store information a
 13.End the program by returning 0.
 
 # Program:
+```
+#include <stdio.h>
+#include <stdlib.h>
 
-//type your code here
+struct subject {
+    char name[50];
+    int marks;
+};
 
+int main() {
+    int n, i;
+    struct subject *s;
+    printf("Enter the number of subjects: ");
+    scanf("%d", &n);
+
+    s = (struct subject *)malloc(n * sizeof(struct subject));
+    if (s == NULL) {
+        printf("Memory allocation failed!\n");
+        return 1; 
+    }
+
+    for (i = 0; i < n; i++) {
+        printf("\nEnter name of subject %d: ", i + 1);
+        scanf(" %[^\n]", s[i].name); 
+        printf("Enter marks for %s: ", s[i].name);
+        scanf("%d", &s[i].marks);
+    }
+
+    printf("\n--- Subject Details ---\n");
+    for (i = 0; i < n; i++) {
+        printf("Subject %d: %s, Marks: %d\n", i + 1, s[i].name, s[i].marks);
+    }
+
+    free(s);
+    return 0;
+}
+
+```
 # Output:
+![image](https://github.com/user-attachments/assets/43f87fa9-7b94-443c-b620-caf021018870)
 
 //paste your output here
 
