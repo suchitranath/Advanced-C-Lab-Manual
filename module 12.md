@@ -1,10 +1,8 @@
-
-
-EXP NO 26: C PROGRAM TO DISPLAY STACK ELEMENTS USING LINKED LIST.
-Aim:
+# EXP NO 26: C PROGRAM TO DISPLAY STACK ELEMENTS USING LINKED LIST.
+## Aim:
 To write a C program to display stack elements using linked list.
 
-Algorithm:
+## Algorithm:
 1.	Define a structure Node with two members: data to store the integer value and next to point to the next node in the linked list.
 2.	Declare a global variable head representing the starting node of the linked list.
 3.	Define a function display to print the elements of the linked list.
@@ -13,74 +11,169 @@ Algorithm:
 6.	Print the data of the current node.
 7.	Move to the next node using the next pointer.
  
-Program:
+## Program:
+```
+#include <stdio.h>
+#include <stdlib.h>
+struct Node {
+    int data;           
+    struct Node* next;  
+};
 
-//type your code here
+struct Node* head = NULL;
+void push(int value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->next = head; 
+    head = newNode;        
+}
 
-Output:
+void display() {
+    if (head == NULL) {
+        printf("Stack is empty.\n");
+        return;
+    }
+    struct Node* p = head;  
+    printf("Stack elements: \n");
+    while (p != NULL) {
+        printf("%d ", p->data);
+        p = p->next;  
+    }
 
-//paste your output here
+    printf("\n");
+}
 
+int main() {
+    int n, value;
+    printf("Enter the number of elements to push onto the stack: ");
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        printf("Enter value %d: ", i + 1);
+        scanf("%d", &value);
+        push(value);
+    }
+    display();
+    return 0;
+}
 
-Result:
+```
+
+## Output:
+
+![image](https://github.com/user-attachments/assets/04288fea-3ab1-4f2b-aed8-a7e4228751c3)
+
+## Result:
 Thus, the program to display stack elements using linked list is verified successfully. 
 
-
-
-EXP.NO 27: C PROGRAM TO POP AN ELEMENT FROM THE GIVEN STACK USING 
-LINKED LIST.
-Aim:
+# EXP.NO 27: C PROGRAM TO POP AN ELEMENT FROM THE GIVEN STACK USING LINKED LIST.
+## Aim:
 To write a C program to pop an element from the given stack using liked list.
 
-Algorithm:
+## Algorithm:
 1.	Check for Empty Stack
 2.	If head is equal to NULL, Print "Stack is empty."
 3.	Else Proceed to the next step.
 4.	Set head to point to the next node in the stack.
  
-Program:
+## Program:
+```
+#include <stdio.h>
+#include <stdlib.h>
 
-//type your code here
+struct Node {
+    int data;           
+    struct Node* next; 
+};
 
-Output:
+struct Node* head = NULL;
+void push(int value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->next = head; 
+    head = newNode;       
+}
+void pop() {
+    if (head == NULL) {
+        printf("Stack is empty.\n");
+        return;
+    }
+    int poppedValue = head->data;
+    struct Node* temp = head;
+    head = head->next;
+    free(temp);
+    printf("Popped element: %d\n", poppedValue);
+}
+void display() {
+    if (head == NULL) {
+        printf("Stack is empty.\n");
+        return;
+    }
+    struct Node* p = head;  
+    printf("Stack elements: \n");
+    while (p != NULL) {
+        printf("%d ", p->data);
+        p = p->next;  
+    }
+    printf("\n");
+}
 
-//paste your output here
+int main() {
+    int n, value, choice;
+    printf("Enter the number of elements to push onto the stack: ");
+    scanf("%d", &n);
+    for (int i = 0; i < n; i++) {
+        printf("Enter value %d: ", i + 1);
+        scanf("%d", &value);
+        push(value);
+    }
+    display();
+    printf("Do you want to pop an element? (1 for Yes, 0 for No): ");
+    scanf("%d", &choice);
 
+    if (choice == 1) {
+        pop();  
+        display();  
+    }
 
+    return 0;
+}
 
-Result:
+```
+
+## Output:
+
+![image](https://github.com/user-attachments/assets/0467bb6a-4185-4bfc-8c8c-42fd8c1db65b)
+
+## Result:
 Thus, the program to pop an element from the given stack using liked list is verified successfully.
 
- 
-EXP NO:28 C PROGRAM TO DISPLAY QUEUE ELEMENTS USING LINKED LIST.
-Aim:
+# EXP NO:28 C PROGRAM TO DISPLAY QUEUE ELEMENTS USING LINKED LIST.
+## Aim:
 To write a C program to display queue elements using linked list.
-Algorithm:
+## Algorithm:
 1.	Check if Queue is Empty
 2.	Display Queue Elements
 3.	Print the data of the current node pointed to by front
 4.	Update front to point to the next node.
 5.	End the display function.
  
-Program:
+## Program:
 
-//type your code here
 
-Output:
+## Output:
 
-//paste your output here
+![image](https://github.com/user-attachments/assets/46c3edf0-252e-438b-95a3-0309e8f684a7)
 
-Result:
+
+## Result:
 Thus, the program to display queue elements using linked list is verified successfully.
 
+# EXP NO:29 C PROGRAM TO INSERT ELEMENTS IN QUEUE USING LINKED LIST
 
- 
-EXP NO:29 C PROGRAM TO INSERT ELEMENTS IN QUEUE USING LINKED LIST
-
-Aim:
+## Aim:
 To write a C program to insert elements in queue using linked list
 
-Algorithm:
+## Algorithm:
 1.	Allocate Memory for New Node
 2.	Set Data and Next Pointer
 3.	Check if Queue is Empty
@@ -88,45 +181,34 @@ Algorithm:
 5.	Set the next pointer of the current rear to point to the new node p.
 6.	End of Enqueue Operation
  
-Program:
+## Program:
 
-//type your code here
 
-Output:
+## Output:
 
-//paste your output here
 
-Result:
+## Result:
 Thus, the program to insert elements in queue using linked list is verified successfully.
 
-
-
-EXP NO:30 C FUNCTION TO FIND THE PEEK OF QUEUE USING LINKED LIST.
-
-
-Aim:
+# EXP NO:30 C FUNCTION TO FIND THE PEEK OF QUEUE USING LINKED LIST.
+## Aim:
 
 The aim of this function is to retrieve the "peek" (the front element) of a queue implemented using a linked list
 
-Algorithm:
+## Algorithm:
 
 1.	Check if the queue is empty:
 o	If the queue is empty (i.e., the front pointer is NULL), return an error or a message indicating that the queue is empty.
 2.	Access the front element:
 o	If the queue is not empty, return the data stored in the front node of the linked list (i.e., the element at the head of the queue).
 
-Program:
-
-//type your code here
-
-Output:
-
-//paste your output here
+## Program:
 
 
+## Output:
 
-Result:
 
+## Result:
 Thus, the program to retrieve the "peek" (the front element) of a queue implemented using a linked list is verified successfully.
 
 
